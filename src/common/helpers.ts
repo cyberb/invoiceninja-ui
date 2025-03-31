@@ -25,9 +25,9 @@ export function isSelfHosted(): boolean {
 }
 
 export function apiEndpoint(): string {
-  if (isHosted()) {
-    return 'https://invoicing.co';
-  }
+  // if (isHosted()) {
+  //   return 'https://invoicing.co';
+  // }
 
   return (
     import.meta.env.VITE_API_URL ||

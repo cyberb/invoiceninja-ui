@@ -21,8 +21,6 @@ import {
 import { authenticate } from '$app/common/stores/slices/user';
 import { useDispatch } from 'react-redux';
 import { ReactNode } from 'react';
-import { GoogleLogin } from '@react-oauth/google';
-import { toast } from '$app/common/helpers/toast/toast';
 import { PublicClientApplication } from '@azure/msal-browser';
 
 export const msal = new PublicClientApplication({
@@ -81,18 +79,6 @@ export function SignInProviders() {
     dispatch(changeCurrentIndex(currentIndex));
   };
 
-  const handleGoogle = (token: string) => {
-    request(
-      'POST',
-      endpoint(
-        '/api/v1/oauth_login?provider=google&id_token=:token&create=true',
-        {
-          token,
-        }
-      )
-    ).then((response) => login(response));
-  };
-
   const handleMicrosoft = (token: string) => {
     request('POST', endpoint('/api/v1/oauth_login?provider=microsoft'), {
       accessToken: token,
@@ -102,12 +88,12 @@ export function SignInProviders() {
   return (
     <div className="grid grid-cols-3 text-sm mt-4">
       <div className="col-span-3 flex flex-col items-center space-y-3">
-        <GoogleLogin
+       {/* <GoogleLogin
           onSuccess={(response) =>
             response.credential && handleGoogle(response.credential)
           }
           onError={() => toast.error()}
-        />
+        />*/}
 
         <SignInProviderButton
           onClick={async () => {
@@ -134,6 +120,20 @@ export function SignInProviders() {
           </svg>
 
           <p>Log in with Microsoft</p>
+        </SignInProviderButton>
+
+        <SignInProviderButton
+          onClick={async () => {
+            await msal.handleRedirectPromise();
+
+            msal
+              .loginPopup({
+                scopes: ['user.read'],
+              })
+              .then((response) => handleMicrosoft(response.accessToken));
+          }}
+        >
+          <p>Log in</p>
         </SignInProviderButton>
 
         {/* 

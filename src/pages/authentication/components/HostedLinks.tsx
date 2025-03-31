@@ -9,7 +9,7 @@
  */
 
 import { useColorScheme } from '$app/common/colors';
-import { Lock, Smartphone, Book } from 'react-feather';
+import { Smartphone, Book } from 'react-feather';
 import { styled } from 'styled-components';
 
 const StyledLink = styled.a`
@@ -30,7 +30,7 @@ export function HostedLinks() {
         color: colors.$3,
       }}
     >
-      <div className="col-span-3 md:col-span-1">
+      {/*<div className="col-span-3 md:col-span-1">
         <StyledLink
           theme={{ hoverColor: colors.$2 }}
           href="https://status.invoiceninja.com/"
@@ -41,7 +41,7 @@ export function HostedLinks() {
           <Lock size={15} />
           <span className="m-1">Check status</span>
         </StyledLink>
-      </div>
+      </div>*/}
       <div className="col-span-3 md:col-span-1">
         <StyledLink
           theme={{ hoverColor: colors.$2 }}
