@@ -9,7 +9,6 @@
  */
 
 import { endpoint } from '$app/common/helpers';
-import { request } from '$app/common/helpers/request';
 import { ReactNode } from 'react';
 import { PublicClientApplication } from '@azure/msal-browser';
 
@@ -116,7 +115,7 @@ export function SignInProviders() {
 
         <SignInProviderButton
           onClick={async () => {
-            request('GET', endpoint('/auth/authelia'))
+            window.location.href = endpoint('/auth/authelia');
           }}
         >
           <p>Log in with Syncloud</p>
