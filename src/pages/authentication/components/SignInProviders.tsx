@@ -8,18 +8,8 @@
  * @license https://www.elastic.co/licensing/elastic-license
  */
 
-import { AxiosResponse } from 'axios';
-import { AuthenticationTypes } from '$app/common/dtos/authentication';
 import { endpoint } from '$app/common/helpers';
 import { request } from '$app/common/helpers/request';
-import { CompanyUser } from '$app/common/interfaces/company-user';
-import {
-  changeCurrentIndex,
-  resetChanges,
-  updateCompanyUsers,
-} from '$app/common/stores/slices/company-users';
-import { authenticate } from '$app/common/stores/slices/user';
-import { useDispatch } from 'react-redux';
 import { ReactNode } from 'react';
 import { PublicClientApplication } from '@azure/msal-browser';
 
@@ -51,7 +41,7 @@ export function SignInProviderButton(props: SignInProviderButtonProps) {
 }
 
 export function SignInProviders() {
-  const dispatch = useDispatch();
+  /*const dispatch = useDispatch();
 
   const login = (response: AxiosResponse) => {
     localStorage.removeItem('X-CURRENT-INDEX');
@@ -83,7 +73,7 @@ export function SignInProviders() {
     request('POST', endpoint('/api/v1/oauth_login?provider=microsoft'), {
       accessToken: token,
     }).then((response) => login(response));
-  };
+  };*/
 
   return (
     <div className="grid grid-cols-3 text-sm mt-4">
@@ -95,6 +85,7 @@ export function SignInProviders() {
           onError={() => toast.error()}
         />*/}
 
+{/*
         <SignInProviderButton
           onClick={async () => {
             await msal.handleRedirectPromise();
@@ -121,19 +112,14 @@ export function SignInProviders() {
 
           <p>Log in with Microsoft</p>
         </SignInProviderButton>
+*/}
 
         <SignInProviderButton
           onClick={async () => {
-            await msal.handleRedirectPromise();
-
-            msal
-              .loginPopup({
-                scopes: ['user.read'],
-              })
-              .then((response) => handleMicrosoft(response.accessToken));
+            request('GET', endpoint('/auth/authelia'))
           }}
         >
-          <p>Log in</p>
+          <p>Log in with Syncloud</p>
         </SignInProviderButton>
 
         {/* 

@@ -9,43 +9,26 @@
  */
 
 import { useState } from 'react';
-import { endpoint, isHosted, isSelfHosted } from '../../common/helpers';
-import { AxiosError } from 'axios';
-import { LoginValidation } from './common/ValidationInterface';
-import { useTranslation } from 'react-i18next';
-import { InputField } from '../../components/forms/InputField';
-import { Button } from '../../components/forms/Button';
-import { Link } from '../../components/forms/Link';
-import { InputLabel } from '../../components/forms/InputLabel';
-import { Alert } from '../../components/Alert';
-import { HostedLinks } from './components/HostedLinks';
 import { Header } from './components/Header';
 import { useTitle } from '$app/common/hooks/useTitle';
-import { request } from '$app/common/helpers/request';
 import { SignInProviders } from './components/SignInProviders';
-import { useLogin } from './common/hooks';
-import { GenericValidationBag } from '$app/common/interfaces/validation-bag';
-import { useAccentColor } from '$app/common/hooks/useAccentColor';
 import { Disable2faModal } from './components/Disable2faModal';
-import { useColorScheme } from '$app/common/colors';
 import { version } from '$app/common/helpers/version';
-import { toast } from '$app/common/helpers/toast/toast';
-import classNames from 'classnames';
 
 export function Login() {
   useTitle('login');
 
-  const accentColor = useAccentColor();
+  /*const accentColor = useAccentColor();
 
   const [message, setMessage] = useState<string | undefined>(undefined);
   const [errors, setErrors] = useState<LoginValidation | undefined>(undefined);
   const [isFormBusy, setIsFormBusy] = useState(false);
-  const [t] = useTranslation();
+  const [t] = useTranslation();*/
 
   const [isDisable2faModalOpen, setIsDisable2faModalOpen] =
     useState<boolean>(false);
 
-  const login = useLogin();
+  /*const login = useLogin();
 
   function handleSubmit(form: HTMLFormElement) {
     const formData = new FormData(form);
@@ -76,13 +59,13 @@ export function Login() {
       .finally(() => setIsFormBusy(false));
   }
 
-  const colors = useColorScheme();
+  const colors = useColorScheme();*/
 
   return (
     <div className="h-screen">
       <Header />
       <div className="flex flex-col items-center">
-        <div
+       {/* <div
           className="mx-4 max-w-md w-full p-8 rounded md:shadow-lg border"
           style={{ backgroundColor: colors.$1, borderColor: colors.$5 }}
         >
@@ -177,17 +160,17 @@ export function Login() {
           <div className="flex justify-center">
             {isHosted() && <Link to="/register">{t('register_label')}</Link>}
           </div>
-        </div>
+        </div>*/}
 
-        {isHosted() && (
+        {/*{isHosted() && (*/}
           <>
             <SignInProviders />
 
-            <div className="mx-4 max-w-md w-full rounded md:shadow-lg mt-4">
+            {/*<div className="mx-4 max-w-md w-full rounded md:shadow-lg mt-4">
               <HostedLinks />
-            </div>
+            </div>*/}
           </>
-        )}
+        {/*)}*/}
 
         <p className="mt-4 text-xs">{version}</p>
       </div>
