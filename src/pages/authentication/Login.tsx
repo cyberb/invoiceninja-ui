@@ -175,11 +175,10 @@ export function Login() {
           </form>
 
           <div className="flex justify-center">
-            {isHosted() && <Link to="/register">{t('register_label')}</Link>}
+            <Link to="/register">{t('register_label')}</Link>
           </div>
         </div>
 
-        {/*{isHosted() && (*/}
           <>
             <SignInProviders />
 
@@ -187,7 +186,6 @@ export function Login() {
               <HostedLinks />
             </div>
           </>
-        {/*)}*/}
 
         <p className="mt-4 text-xs">{version}</p>
       </div>

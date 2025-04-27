@@ -8,7 +8,7 @@
  * @license https://www.elastic.co/licensing/elastic-license
  */
 
-import { HostedRoute } from '$app/components/HostedRoute';
+// import { HostedRoute } from '$app/components/HostedRoute';
 import { PrivateRoute } from '$app/components/PrivateRoute';
 import { PublicRoute } from '$app/components/PublicRoute';
 import { Route } from 'react-router-dom';
@@ -23,9 +23,9 @@ export const authenticationRoutes = (
     <Route element={<PublicRoute />}>
       <Route path="/login" element={<Login />} />
       <Route path="/recover_password" element={<RecoverPassword />} />
-      <Route element={<HostedRoute />}>
+      {/*<Route element={<HostedRoute />}>*/}
         <Route path="/register" element={<Register />} />
-      </Route>
+      {/*</Route>*/}
       <Route path="/demo" element={<Demo />} />
     </Route>
 
