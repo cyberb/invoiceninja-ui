@@ -8,21 +8,8 @@
  * @license https://www.elastic.co/licensing/elastic-license
  */
 
-import { AxiosResponse } from 'axios';
-import { AuthenticationTypes } from '$app/common/dtos/authentication';
 import { endpoint } from '$app/common/helpers';
-import { request } from '$app/common/helpers/request';
-import { CompanyUser } from '$app/common/interfaces/company-user';
-import {
-  changeCurrentIndex,
-  resetChanges,
-  updateCompanyUsers,
-} from '$app/common/stores/slices/company-users';
-import { authenticate } from '$app/common/stores/slices/user';
-import { useDispatch } from 'react-redux';
 import { ReactNode } from 'react';
-import { GoogleLogin } from '@react-oauth/google';
-import { toast } from '$app/common/helpers/toast/toast';
 import { PublicClientApplication } from '@azure/msal-browser';
 
 export const msal = new PublicClientApplication({
@@ -53,7 +40,7 @@ export function SignInProviderButton(props: SignInProviderButtonProps) {
 }
 
 export function SignInProviders() {
-  const dispatch = useDispatch();
+  /*const dispatch = useDispatch();
 
   const login = (response: AxiosResponse) => {
     localStorage.removeItem('X-CURRENT-INDEX');
@@ -81,34 +68,23 @@ export function SignInProviders() {
     dispatch(changeCurrentIndex(currentIndex));
   };
 
-  const handleGoogle = (token: string) => {
-    request(
-      'POST',
-      endpoint(
-        '/api/v1/oauth_login?provider=google&id_token=:token&create=true',
-        {
-          token,
-        }
-      )
-    ).then((response) => login(response));
-  };
-
   const handleMicrosoft = (token: string) => {
     request('POST', endpoint('/api/v1/oauth_login?provider=microsoft'), {
       accessToken: token,
     }).then((response) => login(response));
-  };
+  };*/
 
   return (
     <div className="grid grid-cols-3 text-sm mt-4">
       <div className="col-span-3 flex flex-col items-center space-y-3">
-        <GoogleLogin
+       {/* <GoogleLogin
           onSuccess={(response) =>
             response.credential && handleGoogle(response.credential)
           }
           onError={() => toast.error()}
-        />
+        />*/}
 
+{/*
         <SignInProviderButton
           onClick={async () => {
             await msal.handleRedirectPromise();
@@ -135,7 +111,7 @@ export function SignInProviders() {
 
           <p>Log in with Microsoft</p>
         </SignInProviderButton>
-
+*/}
 
         <SignInProviderButton
           onClick={async () => {
