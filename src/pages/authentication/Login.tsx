@@ -98,11 +98,11 @@ export function Login() {
             className="my-6 space-y-4"
           >
             <InputField
-              type="email"
+              type="username"
               autoComplete="on"
-              label={t('email_address')}
-              errorMessage={errors?.email}
-              name="email"
+              label={t('username')}
+              errorMessage={errors?.username}
+              name="username"
             />
 
             <InputField
