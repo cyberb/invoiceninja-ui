@@ -9,7 +9,7 @@
  */
 
 export interface LoginValidation {
-  email?: string[];
+  username?: string[];
   password?: string[];
   one_time_password?: string[];
 }

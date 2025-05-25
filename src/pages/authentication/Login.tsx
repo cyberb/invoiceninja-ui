@@ -98,11 +98,11 @@ export function Login() {
             className="my-6 space-y-4"
           >
             <InputField
-              type="email"
+              type="username"
               autoComplete="on"
-              label={t('email_address')}
-              errorMessage={errors?.email}
-              name="email"
+              label={t('username')}
+              errorMessage={errors?.username}
+              name="username"
             />
 
             <InputField
@@ -114,6 +114,7 @@ export function Login() {
               name="password"
             />
 
+            {false && (
             <div className="space-y-2">
               <div className="flex flex-col lg:flex-row items-center justify-between">
                 <InputLabel>{`2FA - ${t('one_time_password')}`}</InputLabel>
@@ -161,6 +162,8 @@ export function Login() {
                 placeholder={t('plaid_optional')}
                 name="secret"
               />
+            )}
+
             )}
 
             {message && (
